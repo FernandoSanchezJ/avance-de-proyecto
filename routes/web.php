@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarroController;
+use App\Http\Controllers\PNRController;
+use App\Http\Controllers\TipoPNRController;
 
 
 /*
@@ -24,3 +26,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('home', CarroController::class);
+Route::resource('pnrs', PNRController::class);
+Route::resource('tipopnrs', TipoPNRController::class); 
