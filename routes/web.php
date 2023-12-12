@@ -10,7 +10,6 @@ use App\Http\Controllers\ComparativaController;
 use App\Http\Controllers\RutaController;
 use App\Http\Controllers\LlegadaController;
 use App\Http\Controllers\BackupController;
-use App\Http\Controllers\ConsultasRelacionads;
 use App\Http\Controllers\Vistas;
 
 
@@ -42,13 +41,15 @@ Route::resource('clientes', ClienteController::class);
 Route::resource('comparativas', ComparativaController::class); 
 Route::resource('rutas', RutaController::class); 
 Route::resource('llegadas', LlegadaController::class); 
-
-
-// no se que pedo
-
 Route::get('/backup', [BackupController::class, 'create']);
 Route::get('/vistas/vista1', [Vistas::class, 'paqueteClienteInfo']);
 Route::get('/vistas/vista2', [Vistas::class, 'comparativaPaquete']);
 Route::get('/vistas/vista3', [Vistas::class, 'clienteCarroInfo']);
 Route::get('/vistas/vista4', [Vistas::class, 'repartidorRutaInfo']);
 Route::get('/vistas/vista5', [Vistas::class, 'usuariosPerfil']);
+
+// no se que pedo
+Route::get('/consultas/consulta1', [Vistas::class, 'consultaUsuariosPerfiles']);
+Route::get('/consultas/consulta2', [Vistas::class, 'consultaCarroRepartidor']);
+
+Route::get('/consultas/consulta3', [Vistas::class, 'consultaCarroRepartidor']);

@@ -17,7 +17,7 @@
     <nav class="navbar navbar-expand navbar-dark bg-dark">
         <ul class="nav navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="{{'/' }}" aria-current="page">Portos <span
+                <a class="nav-link active" href="{{'/' }}" aria-current="page">CRUDS <span
                         class="visually-hidden">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -51,6 +51,35 @@
         
         </ul>
     </nav>
+    <nav class="navbar navbar-expand navbar-dark bg-dark responsive">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="#" aria-current="page"
+                    ><h5>VISTAS</h5> <span class="visually-hidden">(current)</span></a
+                >
+            </li>
+                    <li><a class="nav-link" href="{{url('/vistas/vista1')}}">Paquete y Cliente</a></li>
+                    <li><a class="nav-link" href="{{url('/vistas/vista2')}}">Comparativa y Paquete</a></li>
+                    <li><a class="nav-link" href="{{url('/vistas/vista3')}}">Cliente y Carro</a></li>
+                    <li><a class="nav-link" href="{{url('/vistas/vista4')}}">Repartidor y Ruta</a></li>
+                    <li><a class="nav-link" href="{{url('/vistas/vista5')}}">Usuarios y Perfil</a>
+                    </li>
+        </ul>
+    </nav>
+    
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark responsive">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="#" aria-current="page"
+                    ><h5>Consultas</h5> <span class="visually-hidden">(current)</span></a
+                >
+            </li>
+                    <li><a class="nav-link" href="{{url('/consultas/consulta1')}}">Paquete y Cliente</a></li>
+                    <li><a class="nav-link" href="{{url('/consultas/consulta2')}}">Comparativa y Paquete</a></li>
+                    </li>
+        </ul>
+    </nav>
 
 
     <main class="container"></main>
@@ -66,7 +95,6 @@
 
         <div class="col-2"></div>
     </div>
-
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

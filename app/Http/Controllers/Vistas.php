@@ -44,28 +44,30 @@ public function usuariosPerfil()
 }
 
 
-/*
+
+
 
 public function consultaUsuariosPerfiles()
 {
     $datos = DB::table('usuarios')
-        ->join('perfiles', 'usuarios.perfil_id', '=', 'perfiles.id')
-        ->select('usuarios.correo_electronico', 'perfiles.nombre_perfil')
+        ->join('perfil', 'usuarios.perfil', '=', 'perfil.id')
+        ->select('usuarios.nombreU', 'perfil.perfil')
         ->get();
 
     return view('consultas.consulta1', ['datos' => $datos]);
 }
 
-public function consultaDoctoresPacientes()
+public function consultaCarroRepartidor()
 {
-    $datos = DB::table('info_doctores')
-        ->join('recetas_medicas', 'info_doctores.id', '=', 'recetas_medicas.id_doctor')
-        ->join('info_pacientes', 'recetas_medicas.id_paciente', '=', 'info_pacientes.id')
-        ->select('info_doctores.nombre AS nombre_doctor', 'info_pacientes.nombre AS nombre_paciente')
+    $datos = DB::table('repartidor')
+        ->join('carro', 'repartidor.id', '=', 'carro.id')
+        ->select('repartidor.nombre AS nombre_repartidor', 'carro.marca AS marca_carro')
         ->get();
 
     return view('consultas.consulta2', ['datos' => $datos]);
 }
+
+/*
 public function consultaPacientesDoctores()
 {
     $datos = DB::table('info_pacientes')
@@ -75,5 +77,6 @@ public function consultaPacientesDoctores()
         ->get();
 
     return view('consultas.consulta3', ['datos' => $datos]);
-}*/
+}
+*/
 }
