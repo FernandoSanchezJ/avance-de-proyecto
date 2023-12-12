@@ -12,6 +12,8 @@ class ComparativaController extends Controller
      */
     public function index()
     {
+        $comparativas=Comparativa::all();
+        return view('comparativa.index', compact('comparativas'));
         //
     }
 
@@ -28,6 +30,10 @@ class ComparativaController extends Controller
      */
     public function store(Request $request)
     {
+        $comparativas=new Comparativa;
+        $comparativas->idCodigo=$request->input('idCodigo');
+        $comparativas->save();
+        return redirect()->back();
         //
     }
 
@@ -50,16 +56,23 @@ class ComparativaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comparativa $comparativa)
+    public function update(Request $request, $id)
     {
+        $comparativas=Comparativa::find($id);
+        $comparativas->idCodigo=$request->input('idCodigo');
+        $comparativas->update();
+        return redirect()->back();
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Comparativa $comparativa)
+    public function destroy($id)
     {
+        $comparativas=Comparativa::find($id);
+        $comparativas->delete();
+        return redirect()->back();
         //
     }
 }

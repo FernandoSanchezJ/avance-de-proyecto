@@ -13,7 +13,7 @@ class ClienteController extends Controller
     public function index()
     {
         $clientes=Cliente::all();
-        return view('cliente.index', compact('cliente'));
+        return view('cliente.index', compact('clientes'));
 
         //
     }
@@ -31,6 +31,18 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+        $clientes=new Cliente;
+        $clientes->nombre=$request->input('nombre');
+        $clientes->apellidos=$request->input('apellidos');
+        $clientes->telefono=$request->input('telefono');
+        $clientes->cp=$request->input('cp');
+        $clientes->municipio=$request->input('municipio');
+        $clientes->calle=$request->input('calle');
+        $clientes->numI=$request->input('numI');
+        $clientes->numE=$request->input('numE');
+        $clientes->referencia=$request->input('referencia');
+        $clientes->save();
+        return redirect()->back();
         //
     }
 
@@ -53,16 +65,31 @@ class ClienteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(Request $request, $id)
     {
+        $clientes=Cliente::find($id);
+        $clientes->nombre=$request->input('nombre');
+        $clientes->apellidos=$request->input('apellidos');
+        $clientes->telefono=$request->input('telefono');
+        $clientes->cp=$request->input('cp');
+        $clientes->municipio=$request->input('municipio');
+        $clientes->calle=$request->input('calle');
+        $clientes->numI=$request->input('numI');
+        $clientes->numE=$request->input('numE');
+        $clientes->referencia=$request->input('referencia');
+        $clientes->update();
+        return redirect()->back();   
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cliente $cliente)
+    public function destroy(Cliente $id)
     {
+        $clientes=PNR::find($id);
+        $clientes->delete();
+        return redirect()->back();
         //
     }
 }

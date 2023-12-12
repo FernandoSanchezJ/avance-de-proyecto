@@ -10,7 +10,7 @@ class Carro extends Model
     use HasFactory;
 
     protected $table='carro';
-    protected $primerykey='id';
+    protected $primarykey='id';
     protected $fillable=['marca', 'modelo', 'color', 'matricula', 'año'];
     protected $guarded=[];
     public $timestamps=false;

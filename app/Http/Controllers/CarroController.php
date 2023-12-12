@@ -12,8 +12,8 @@ class CarroController extends Controller
      */
     public function index()
     {
-        $carro=Carro::all();
-        return view('carros.index', compact('carro'));
+        $carros=Carro::all();
+        return view('carros.index', compact('carros'));
 
         //
     }
@@ -31,13 +31,13 @@ class CarroController extends Controller
      */
     public function store(Request $request)
     {
-        $carro=new Carro;
-        $carro->marca=$request->input('marca');
-        $carro->modelo=$request->input('modelo');
-        $carro->color=$request->input('color');
-        $carro->matricula=$request->input('matricula');
-        $carro->año=$request->input('año');
-        $carro->save();
+        $carros=new Carro;
+        $carros->marca=$request->input('marca');
+        $carros->modelo=$request->input('modelo');
+        $carros->color=$request->input('color');
+        $carros->matricula=$request->input('matricula');
+        $carros->año=$request->input('año');
+        $carros->save();
         return redirect()->back();
         //
     }
@@ -56,8 +56,8 @@ class CarroController extends Controller
      */
     public function edit($id)
     {
-        $carro=Carro::find($id);
-        return view('carros.modal-info',compact('carro'));
+        $carros=Carro::find($id);
+        return view('carros.modal-info',compact('carros'));
         //
     }
 
@@ -66,13 +66,13 @@ class CarroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $carro=Carro::find($id);
-        $carro->marca=$request->input('marca');
-        $carro->modelo=$request->input('modelo');
-        $carro->color=$request->input('color');
-        $carro->matricula=$request->input('matricula');
-        $carro->año=$request->input('año');
-        $carro->update();
+        $carros=Carro::find($id);
+        $carros->marca=$request->input('marca');
+        $carros->modelo=$request->input('modelo');
+        $carros->color=$request->input('color');
+        $carros->matricula=$request->input('matricula');
+        $carros->año=$request->input('año');
+        $carros->update();
         return redirect()->back();
         //
     }
@@ -82,8 +82,8 @@ class CarroController extends Controller
      */
     public function destroy($id)
     {
-        $carro=Carro::find($id);
-        $carro->delete();
+        $carros=Carro::find($id);
+        $carros->delete();
         return redirect()->back();
         //
     }

@@ -1,4 +1,4 @@
-@extends('home')
+@extends('welcome')
 
 @section('content')
 
@@ -6,7 +6,7 @@
     <div class="col-2"></div>
     <div class="col-8">
         <br></br>
-        <h1>Lista de Carros </h1>
+        <h1>Lista de ruta </h1>
         <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#create">
             Agregar Carro
         </button>
@@ -15,37 +15,29 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Color</th>
-                        <th>Matricula</th>
-                        <th>Año</th>
+                        <th>Rutas</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($carro as $carros)
+                    @foreach($rutas as $ruta)
                     <tr>
-                        <td> {{ $carros->id }} </td>
-                        <td> {{ $carros->marca }} </td>
-                        <td> {{ $carros->modelo }} </td>
-                        <td> {{ $carros->color }} </td>
-                        <td> {{ $carros->matricula }} </td>
-                        <td> {{ $carros->año }} </td>
+                        <td> {{ $ruta->id }} </td>
+                        <td> {{ $ruta->ruta }} </td>
                         <td>
-                            <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#edit{{ $carros->id }}">
+                            <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#edit{{ $ruta->id }}">
                                 Editar
-                            </button><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{ $carros->id }}">
+                            </button><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{ $ruta->id }}">
                                 Eliminar
                             </button>
                         </td>
                     </tr>
-                    @include('carros.modal-info')
+                    @include('ruta.modal-info')
                     @endforeach
                 </tbody>
             </table>
         </div>
-        @include('carros.modal-create')
+        @include('ruta.modal-create')
     </div>
     <div class="col-md-2"></div>
 </div>

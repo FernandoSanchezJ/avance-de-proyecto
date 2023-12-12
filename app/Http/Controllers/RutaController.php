@@ -12,6 +12,8 @@ class RutaController extends Controller
      */
     public function index()
     {
+        $rutas=Ruta::all();
+        return view('ruta.index', compact('rutas'));
         //
     }
 
@@ -28,6 +30,10 @@ class RutaController extends Controller
      */
     public function store(Request $request)
     {
+        $rutas=new Comparativa;
+        $rutas->ruta=$request->input('ruta');
+        $rutas->save();
+        return redirect()->back();
         //
     }
 
@@ -50,16 +56,23 @@ class RutaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ruta $ruta)
+    public function update(Request $request, $id)
     {
+        $rutas=Ruta::find($id);
+        $rutas->ruta=$request->input('ruta');
+        $rutas->update();
+        return redirect()->back();
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ruta $ruta)
+    public function destroy($id)
     {
+        $rutas=Ruta::find($id);
+        $rutas->delete();
+        return redirect()->back();
         //
     }
 }

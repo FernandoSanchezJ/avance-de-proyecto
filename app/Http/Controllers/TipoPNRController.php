@@ -13,7 +13,7 @@ class TipoPNRController extends Controller
     public function index()
     {
         $tipopnrs=TipoPNR::all();
-        return view('tipoPnr.index', compact('tipopnrs'));
+        return view('tipopnr.index', compact('tipopnrs'));
         //
     }
 
@@ -30,6 +30,10 @@ class TipoPNRController extends Controller
      */
     public function store(Request $request)
     {
+        $tipopnrs=new TipoPNR;
+        $tipopnrs->tipo=$request->input('tipo');
+        $tipopnrs->save();
+        return redirect()->back();
         //
     }
 
@@ -44,7 +48,7 @@ class TipoPNRController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TipoPNR $tipoPNR)
+    public function edit($id)
     {
         //
     }
@@ -52,16 +56,23 @@ class TipoPNRController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TipoPNR $tipoPNR)
+    public function update(Request $request, $id)
     {
+        $tipopnrs=TipoPNR::find($id);
+        $tipopnrs->tipo=$request->input('tipo');
+        $tipopnrs->update();
+        return redirect()->back();
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TipoPNR $tipoPNR)
+    public function destroy($id)
     {
+        $tipopnrs=TipoPNR::find($id);
+        $tipopnrs->delete();
+        return redirect()->back();
         //
     }
 }

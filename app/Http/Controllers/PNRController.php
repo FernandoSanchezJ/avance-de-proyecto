@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\PNR;
+use App\Models\TipoPNR;
+use App\Models\Repartidor;
 use Illuminate\Http\Request;
 
 class PNRController extends Controller
@@ -13,7 +15,9 @@ class PNRController extends Controller
     public function index()
     {
         $pnrs=PNR::all();
-        return view('pnr.index', compact('pnrs'));
+        $tipopnrs=TipoPNR::all();
+        $repartidores=Repartidor::all();
+        return view('pnr.index',compact('pnrs', 'tipopnrs', 'repartidores'));
 
         //
     }
@@ -33,8 +37,8 @@ class PNRController extends Controller
     {
         $pnrs=new PNR;
         $pnrs->descripcion=$request->input('descripcion');
-        $pnrs->idT=$request->input('tipoPNR');
-        $pnrs->idReptaridor=$request->input('repartidor');
+        $pnrs->idT=$request->input('idT');
+        $pnrs->idRepartidor=$request->input('idRepartidor');
         $pnrs->save();
         return redirect()->back();
         //
@@ -43,7 +47,7 @@ class PNRController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PNR $pNR)
+    public function show($id)
     {
         //
     }
@@ -59,13 +63,13 @@ class PNRController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PNR $pNR)
+    public function update(Request $request, $id)
     {
         $pnrs=PNR::find($id);
         $pnrs->descripcion=$request->input('descripcion');
-        $pnrs->idT=$request->input('tipoPNR');
-        $pnrs->idReptaridor=$request->input('repartidor');
-        $pnrs->save();
+        $pnrs->idT=$request->input('idT');
+        $pnrs->idRepartidor=$request->input('idRepartidor');
+        $pnrs->update();
         return redirect()->back();
         //
     }

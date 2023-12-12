@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Repartidor;
+use App\Models\Carro;
 use Illuminate\Http\Request;
 
 class RepartidorController extends Controller
@@ -12,6 +13,9 @@ class RepartidorController extends Controller
      */
     public function index()
     {
+        $repartidores=Repartidor::all();
+        $carros=Carro::all();
+        return view('repartidor.index', compact('repartidores', 'carros'));
         //
     }
 
@@ -28,6 +32,19 @@ class RepartidorController extends Controller
      */
     public function store(Request $request)
     {
+        $repartidores= new Repartidor;
+        $repartidores->nombre=$request->input('nombre');
+        $repartidores->apellidos=$request->input('apellidos');
+        $repartidores->edad=$request->input('edad');
+        $repartidores->cumpleaños=$request->input('cumpleaños');
+        $repartidores->curp=$request->input('curp');
+        $repartidores->genero=$request->input('genero');
+        $repartidores->telefono=$request->input('telefono');
+        $repartidores->email=$request->input('email');
+        $repartidores->licencia=$request->input('licencia');
+        $repartidores->idCarro=$request->input('idCarro');
+        $repartidores->save();
+        return redirect()->back();
         //
     }
 
@@ -50,8 +67,21 @@ class RepartidorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Repartidor $repartidor)
+    public function update(Request $request, $id)
     {
+        $repartidores=Repartidor::find($id);
+        $repartidores->nombre=$request->input('nombre');
+        $repartidores->apellidos=$request->input('apellidos');
+        $repartidores->edad=$request->input('edad');
+        $repartidores->cumpleaños=$request->input('cumpleaños');
+        $repartidores->curp=$request->input('curp');
+        $repartidores->genero=$request->input('genero');
+        $repartidores->telefono=$request->input('telefono');
+        $repartidores->email=$request->input('email');
+        $repartidores->licencia=$request->input('licencia');
+        $repartidores->idCarro=$request->input('idCarro');
+        $repartidores->update();
+        return redirect()->back();
         //
     }
 
@@ -60,6 +90,9 @@ class RepartidorController extends Controller
      */
     public function destroy(Repartidor $repartidor)
     {
+        $repartidores=Reapartidor::find($id);
+        $repartidores->delete();
+        return redirect()->back();
         //
     }
 }

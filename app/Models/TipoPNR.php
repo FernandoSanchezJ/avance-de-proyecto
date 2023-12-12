@@ -10,8 +10,7 @@ class TipoPNR extends Model
     use HasFactory;
 
     protected $table='tipoPNR';
-    protected $primerykey='id';
+    protected $primaryKey='id';
     protected $fillable=['tipo'];
-    protected $guarded=[];
     public $timestamps=false;
 }
